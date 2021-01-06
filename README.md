@@ -20,3 +20,5 @@ curl -s https://en.wiktionary.org/wiki/turm#german | grep -c adverb
 
 use:
 sh checker.sh "word"
+
+In nouns the first letter is case sensitive
