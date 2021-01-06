@@ -17,3 +17,6 @@ curl -s https://en.wiktionary.org/wiki/turm#german | grep -c adverb
 (grep -c returns the number of lines with the pattern, if 0 then its not that word type)
 
 
+
+use:
+sh checker.sh "word"
