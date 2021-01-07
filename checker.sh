@@ -43,7 +43,7 @@ then
 var5=$(echo ${word^})
 curl -s https://en.wiktionary.org/wiki/${var5}#${language} >> ${var5}.txt
 var1=$(cat ${var5}.txt | grep -c ${language}_noun)
-m ${var5}.txt
+rm ${var5}.txt
 #printf "$var5"
 fi
 
