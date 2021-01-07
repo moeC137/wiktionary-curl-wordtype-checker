@@ -12,4 +12,4 @@ sh checker.sh -l English -w carport
 -l sets language
 -w word for request
 
-
+use sh sorter.sh to sort a textfile with a list of words
