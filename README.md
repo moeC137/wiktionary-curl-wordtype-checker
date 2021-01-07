@@ -7,6 +7,9 @@ does a curl. then checks with a grep.
 
 
 use:
-sh checker.sh "word"
+sh checker.sh -l English -w carport
+
+-l sets language
+-w word for request
 
 
