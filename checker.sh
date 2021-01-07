@@ -19,11 +19,17 @@ var3=$(cat ${1}.txt | grep -c German_adjective)
 var4=$(cat ${1}.txt | grep -c German_pronoun)
 #echo ${var4}
 
+var6=$(cat ${1}.txt | grep -c German_preposition)
+var7=$(cat ${1}.txt | grep -c German_adverb)
+var8=$(cat ${1}.txt | grep -c German_conjunction)
+var9=$(cat ${1}.txt | grep -c German_numeral)
+var10=$(cat ${1}.txt | grep -c German_article)
+
 
 rm ${1}.txt
 
 
-if [[ $var1+$var2+$var3+$var4 -lt 1 ]]
+if [[ $var1+$var2+$var3+$var4+var6+var7+var8+var9+var10 -lt 1 ]]
 then
 var5=$(echo ${1^})
 #printf "$var5"
@@ -56,4 +62,29 @@ fi
 if [[ $var4 -gt 0 ]]
 then
 printf "es ist ein pronoun \n"
+fi
+
+if [[ $var6 -gt 0 ]]
+then
+printf "es ist eine preposition \n"
+fi
+
+if [[ $var7 -gt 0 ]]
+then
+printf "es ist eine adverb \n"
+fi
+
+if [[ $var8 -gt 0 ]]
+then
+printf "es ist eine conjunction \n"
+fi
+
+if [[ $var9 -gt 0 ]]
+then
+printf "es ist eine numeral \n"
+fi
+
+if [[ $var10 -gt 0 ]]
+then
+printf "es ist eine article \n"
 fi
