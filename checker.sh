@@ -1,49 +1,60 @@
 #!/bin/bash/
 
+while getopts l:w:h: flag
+do
+    case "${flag}" in
+        l) language=${OPTARG};;
+        w) word=${OPTARG};;
+        h) help=${OPTARG};;
+    esac
+done
 
-curl -s https://en.wiktionary.org/wiki/${1}#german >> ${1}.txt
+
+curl -s https://en.wiktionary.org/wiki/${word}#${language} >> ${word}.txt
 
 #echo "noun:"
-var1=$(cat ${1}.txt | grep -c German_noun)
+var1=$(cat ${word}.txt | grep -c ${language}_noun)
 #echo ${var1} 
 
 #echo "verb:"
-var2=$(cat ${1}.txt | grep -c German_verb)
+var2=$(cat ${word}.txt | grep -c ${language}_verb)
 #echo ${var2}
 
 #echo "adjective"
-var3=$(cat ${1}.txt | grep -c German_adjective)
+var3=$(cat ${word}.txt | grep -c ${language}_adjective)
 #echo ${var3}
 
 #echo "pronoun"
-var4=$(cat ${1}.txt | grep -c German_pronoun)
+var4=$(cat ${word}.txt | grep -c ${language}_pronoun)
 #echo ${var4}
 
-var6=$(cat ${1}.txt | grep -c German_preposition)
-var7=$(cat ${1}.txt | grep -c German_adverb)
-var8=$(cat ${1}.txt | grep -c German_conjunction)
-var9=$(cat ${1}.txt | grep -c German_numeral)
-var10=$(cat ${1}.txt | grep -c German_article)
+var6=$(cat ${word}.txt | grep -c ${language}_preposition)
+var7=$(cat ${word}.txt | grep -c ${language}_adverb)
+var8=$(cat ${word}.txt | grep -c ${language}_conjunction)
+var9=$(cat ${word}.txt | grep -c ${language}_numeral)
+var10=$(cat ${word}.txt | grep -c ${language}_article)
 
 
-rm ${1}.txt
+rm ${word}.txt
 
-
+#echo "$var1"
 if [[ $var1+$var2+$var3+$var4+var6+var7+var8+var9+var10 -lt 1 ]]
 then
-var5=$(echo ${1^})
+var5=$(echo ${word^})
+curl -s https://en.wiktionary.org/wiki/${var5}#${language} >> ${var5}.txt
+var1=$(cat ${var5}.txt | grep -c ${language}_noun)
+m ${var5}.txt
 #printf "$var5"
 fi
 
-curl -s https://en.wiktionary.org/wiki/${var5}#german >> ${var5}.txt
+#curl -s https://en.wiktionary.org/wiki/${var5}#${language} >> ${var5}.txt
 
-var1=$(cat ${var5}.txt | grep -c German_noun)
-#var2=$(cat ${var5}.txt | grep -c German_verb)
-#var3=$(cat ${var5}.txt | grep -c German_adjective)
-#var4=$(cat ${var5}.txt | grep -c German_pronoun)
+#var1=$(cat ${var5}.txt | grep -c ${language}_noun)
 
-rm ${var5}.txt
 
+#rm ${var5}.txt
+
+#echo "$var1"
 if [[ $var1 -gt 0 ]]
 then
 printf "es ist ein noun \n" 
@@ -88,3 +99,8 @@ if [[ $var10 -gt 0 ]]
 then
 printf "es ist eine article \n"
 fi
+
+
+echo "language: $language";
+echo "word: $word";
+echo "help: $help";
