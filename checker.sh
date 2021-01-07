@@ -44,7 +44,7 @@ var10=$(cat ${word}.txt | grep -c ${language}_article)
 rm ${word}.txt
 
 #echo "$var1"
-if [[ $var1+$var2+$var3+$var4+var6+var7+var8+var9+var10 -lt 1 ]]
+if [[ $var1+$var2+$var3+$var4+$var6+$var7+$var8+$var9+$var10 -lt 1 ]]
 then
 var5=$(echo ${word^})
 curl -s https://en.wiktionary.org/wiki/${var5}#${language} >> ${var5}.txt
@@ -63,47 +63,62 @@ fi
 #echo "$var1"
 if [[ $var1 -gt 0 ]]
 then
-printf "es ist ein noun \n" 
+printf "is a noun \n" 
+echo "${word}" >> nouns.txt
 fi
 
 if [[ $var2 -gt 0 ]]
 then
-printf "es ist ein verb \n"
+printf "is a verb \n"
+echo "${word}" >> verbs.txt
 fi
 
 if [[ $var3 -gt 0 ]]
 then
-printf "es ist ein adjective \n"
+printf "is a adjective \n"
+echo "${word}" >> adjectives.txt
 fi
 
 if [[ $var4 -gt 0 ]]
 then
-printf "es ist ein pronoun \n"
+printf "is a pronoun \n"
+echo "${word}" >> pronouns.txt
 fi
 
 if [[ $var6 -gt 0 ]]
 then
-printf "es ist eine preposition \n"
+printf "is a preposition \n"
+echo "${word}" >> prepositions.txt
 fi
 
 if [[ $var7 -gt 0 ]]
 then
-printf "es ist eine adverb \n"
+printf "is a adverb \n"
+echo "${word}" >> adverbs.txt
 fi
 
 if [[ $var8 -gt 0 ]]
 then
-printf "es ist eine conjunction \n"
+printf "is a conjunction \n"
+echo "${word}" >> conjunctions.txt
 fi
 
 if [[ $var9 -gt 0 ]]
 then
-printf "es ist eine numeral \n"
+printf "is a numeral \n"
+echo "${word}" >> numerals.txt
 fi
 
 if [[ $var10 -gt 0 ]]
 then
-printf "es ist eine article \n"
+printf "is a article \n"
+echo "${word}" >> articles.txt
+fi
+
+if [[ $var1+$var2+$var3+$var4+$var6+$var7+$var8+$var9+$var10 -lt 1 ]]
+then
+printf "is a other thing \n"
+echo "${word}" >> others.txt
 fi
 
 
