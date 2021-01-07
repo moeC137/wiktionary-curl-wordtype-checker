@@ -1,11 +1,17 @@
 #!/bin/bash/
 
-while getopts l:w:h: flag
+if [ "$1" == "-h" ]; then
+  echo "Usage:sh checker.sh -l Language -w word"
+  echo "dont forget to set chmod u+x checker.sh before testing!"
+  exit 0
+fi
+
+
+while getopts l:w: flag
 do
     case "${flag}" in
         l) language=${OPTARG};;
         w) word=${OPTARG};;
-        h) help=${OPTARG};;
     esac
 done
 
@@ -103,4 +109,4 @@ fi
 
 echo "language: $language";
 echo "word: $word";
-echo "help: $help";
+
